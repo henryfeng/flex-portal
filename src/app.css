@@ -1,0 +1,139 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #333333;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+:root {
+  --ticatec-template-background-color: #f7f7f7;
+  --ticatec-component-background-color: #ffffff;
+  --ticatec-primary-color: #333333;
+  --ticatec-bar-border-color: #dddddd;
+}
+
+[data-theme="dark"] {
+  --ticatec-template-background-color: #424242;
+  --ticatec-component-background-color: #212121;
+  --ticatec-bar-border-color: #515151;
+  --ticatec-primary-color: #ffffff;
+}
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: var(--ticatec-primary-color);
+}
+
+
+
+.ticatec-template-board-wrapper {
+  position: relative;
+  padding: 4px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: var(--ticatec-template-background-color);
+}
+
+  /*定义模版总宽度分为24格，*/
+.ticatec-template-board {
+  width: 100%;
+  height: 100%;
+  min-width: 1200px;
+  display: grid;
+  position: relative;
+  box-sizing: border-box;
+  grid-auto-rows: 4.1666vw;
+  grid-gap: 0;
+  grid-column-gap: 0;
+  grid-template-columns:  repeat(24, 4.1666%);
+  grid-auto-flow: dense;
+  font-size: 1.25vw;
+}
+
+.ticatec-component-frame-wrapper {
+  position: relative;
+  padding: 4px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ticatec-component-frame {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--ticatec-component-background-color);
+}
+
+.ticatec-component-frame .title-bar {
+  width: 100%;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--ticatec-bar-border-color);
+}
+
+.ticatec-component {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.ticatec-component-frame-indicator-wrapper {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #ffffff30;
+}
+
+.ticatec-component-frame-indicator {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.ticatec-component-frame.blur {
+  filter: blur(2px);
+}
+
+
+@media screen and (min-width: 1200px) {
+  body, .ticatec-template-board {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .ticatec-template-board {
+    grid-auto-rows: 50px;
+  }
+}

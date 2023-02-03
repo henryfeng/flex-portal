@@ -1,0 +1,435 @@
+:root {
+    --dashboard-background-color: #e1e1e1;
+    --dashboard-button-border-color: #e1e1e1;
+}
+
+.ticatec-dashboard-panel-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    color: #333333;
+    font-size: 12px;
+}
+
+.ticatec-dashboard-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ticatec-dashboard-title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    flex-grow: 0;
+    align-items: center;
+    flex-wrap: nowrap;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.dashboard-title-text {
+    font-size: 1.5em;
+    font-weight: 600;
+    flex-grow: 1;
+    flex-shrink: 0;
+    position: relative;
+    box-sizing: border-box;
+    padding: 4px 8px;
+}
+
+.dashboard-panel-toolbar {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.dashboard-panel-toolbar .icon-button {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    padding: 3px;
+    position: relative;
+    box-sizing: border-box;
+    top: 1px;
+}
+
+.icon-button:hover {
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid var(--dashboard-button-border-color);
+}
+
+.icon-button:active {
+    top: 2px
+}
+
+.dashboard-panel-toolbar img {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.ticatec-dashboard {
+    flex-shrink: 1;
+    flex-grow: 1;
+    background-color: var(--dashboard-background-color);
+    overflow: auto;
+    position: relative;
+}
+
+.ticatec-dashboard-content {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    min-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-auto-rows: max(4.1666vw, 50px);
+    grid-gap: 0;
+    grid-column-gap: 0;
+    font-size: max(1vw, 12px);
+}
+
+.ticatec-dashboard-content.show-grid {
+    background-image: radial-gradient(circle at 10px 10px, black 1px, transparent 0);
+    background-size: 10px 10px;
+}
+
+.ticatec-dashboard-component-frame-wrapper {
+    position: relative;
+    padding: 2px 4px 6px 4px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.ticatec-dashboard-component-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+
+.ticatec-dashboard-component-frame .component-title {
+    width: 100%;
+    border-bottom: 1px solid #e1e1e1;
+    padding: 4px max(0.5vw, 6px);
+    box-sizing: border-box;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+}
+
+.show-grid .ticatec-dashboard-component-frame:hover .component-title {
+    display: block;
+}
+
+.frame-toolbar {
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    box-sizing: border-box;
+    padding: 2px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: #ff3e00;
+    z-index: 1;
+}
+
+.frame-toolbar img {
+    position: relative;
+    top: -5px;
+    width: 12px;
+    height: 12px;
+}
+
+.ticatec-dashboard-component-frame .component-title span {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 1.2em;
+}
+
+.ticatec-dashboard-component-frame .component-content {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    top: 0;
+}
+
+.component-frame-shadow-wrapper {
+    position: absolute;
+    border: 1px solid #3eff00;
+}
+
+.component-frame-shadow-wrapper .conner {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: nwse-resize;
+    z-index: 2;
+}
+
+.ticatec-dashboard-editor-toolbar {
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 4px 8px;
+}
+
+.ticatec-dashboard-editor-toolbar label {
+    width: 100px;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.ticatec-dashboard-editor-toolbar label span{
+    width: 40px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 8px;
+}
+
+.ticatec-dashboard-editor-toolbar label input{
+    width: 40px;
+    padding: 4px 6px;
+    outline: none;
+    border-width: 1px;
+    border-radius: 10px;
+    text-align: right;
+}
+
+.ticatec-dashboard-editor-toolbar label input:focus{
+    border-color: #1976d2;
+}
+
+.tool-window {
+    position: absolute;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    width: 240px;
+    background-color: #FFFFFF;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px 2px #f0f0f0;
+    overflow: hidden;
+}
+
+.window-title-bar {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 2px 8px;
+    background-color: #7f7f7f;
+    flex-grow: 0;
+    flex-shrink: 0;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.tool-window .filter-panel {
+    padding: 4px 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.tool-window .filter-panel input {
+    padding: 4px 36px 4px 8px;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+.tool-window .filter-panel img {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 12px;
+    top: 6px;
+}
+
+/*分割线*/
+
+
+.ticatec-template-editor-board {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fefefef0;
+    z-index: 100;
+    padding: 1vw;
+}
+
+.ticatec-template-editor-board-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: #fefefe;
+    border: 1px solid #7f7f7f;
+}
+
+.ticatec-template-component-listbox-wrapper {
+    width: 300px;
+    height: 100%;
+    position: relative;
+    border-right: 1px solid #E0E0E0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.ticatec-listview-box {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.ticatec-listview-box-item {
+    min-height: 55px;
+    border-bottom: 1px solid #E0E0E0;
+    position: relative;
+    width: 100%;
+}
+
+.ticatec-listview-box-item:hover {
+    background-color: #ffffe1;
+}
+
+
+.ticatec-listview-box-item:active {
+    background-color: #0277BD;
+    color: #FFFFFF;
+}
+
+
+.ticatec-template-layout-container-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.ticatec-template-editor-top-bar-wrapper {
+    width: 100%;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #cccccc;
+}
+
+.ticatec-template-editor-top-bar-wrapper .editor-attr-field {
+    display: inline-block;
+    line-height: 32px;
+}
+
+.ticatec-template-editor-top-bar-wrapper .editor-attr-field label{
+    width: 40px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 6px;
+}
+
+.ticatec-template-editor-top-bar-wrapper img {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+}
+
+.ticatec-template-editor-top-bar-wrapper img:hover {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #cccccc;
+}
+
+.ticatec-template-editor-top-bar-wrapper img:active {
+    top: 1px;
+}
+
+.ticatec-template-editor-top-bar-wrapper .editor-attr-field input {
+    width: 40px;
+}
+
+.ticatec-template-layout-container {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+    background-color: #e1e1e1;
+}
+
+.ticatec-template-editor-panel-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 1220px;
+    height: 100%;
+    min-height: 1020px;
+    box-sizing: border-box;
+    zoom: 1;
+    padding: 10px;
+}
+
+.ticatec-template-editor-panel {
+    width: 1200px;
+    height: 100%;
+    min-height: 1000px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid #cccccc;
+    background-image: radial-gradient(circle at 25px 25px, black 1px, transparent 0);
+    background-size: 25px 25px;
+}
+
+.ticatec-flex-layout {
+    display: flex;
+}
+
+.ticatec-flex-layout.horizontal {
+    flex-direction: row;
+}
+
+.ticatec-flex-layout.vertical {
+    flex-direction: column;
+}
+
+
+@media screen and (min-width: 1200px) {
+    .ticatec-dashboard-panel {
+        min-width: 1000px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .ticatec-dashboard-panel {
+        min-width: 1200px;
+    }
+}
