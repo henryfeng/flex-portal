@@ -20,7 +20,10 @@
     import DropIn from "./DropIn2.svelte";
     import {onMount} from "svelte";
     import {service, service as tmpService} from "../template/TemplateManager";
+    import TemplateManager from "../lib/TemplateManager";
+    import TemplateChoosePanel from "./TemplateChoosePanel.svelte";
 
+    let templates: Array<Template>;
     export let template: Template;
     export let frames: Array<Frame> = [];
     export let status: DashboardStatus;
@@ -94,7 +97,7 @@
 
     const removeFrame = () => {
         console.log('removeFrame. id:', selectedFrame.frameId)
-        delComonent(selectedFrame);
+        delComponent(selectedFrame);
         selectedFrame = null;
         frames = frames;
     }
@@ -272,7 +275,7 @@
     function dragstartRight(ev) {
         let item = ev.detail;
         console.log('dragstartRight', item);
-        delComonent(item);
+        delComponent(item);
         newComponent = item;
         // TODO 得等它完成dragstart的事情后，那个div再挡上，要不然就不能拖了。其实这段我也不懂。。。。。
         setTimeout(() => {
@@ -282,7 +285,7 @@
     }
 
     // ==== 拖动改变右边控件位置的处理，只有dragstart，因为后面的走的是拖动添加新控件的功能 end =====
-    function delComonent(item) {
+    function delComponent(item) {
         console.log('delComonent. x ,y :', item.posX,item.posY);
         for (let i = 0; i < frames.length; i++) {
             if (frames[i].posX === item.posX && frames[i].posY === item.posY) {
@@ -385,7 +388,21 @@
 
     // =======拖动改变大小的功能 end===========
 
+    const changeTemplate = async (e) => {
+        template = e.detail;
+        await TemplateManager.getInstance().loadTemplate(template);
+        template = TemplateManager.getInstance().current;
+        frames = template.frames;
+    }
 
+    const deleteTemplate = async (e) => {
+        let tpl = e.detail;
+        window.MessageBox.show(`确定要删除模版${tpl.name}吗？删除后无法恢复，请确定`,()=>{});
+    }
+
+    onMount(()=>{
+        templates = TemplateManager.getInstance().get();
+    })
 </script>
 <div class="tsui-dashboard-panel" style="{dialogVisible ? 'filter: blur(1px)' : ''}">
     <div class="title-bar">
@@ -446,4 +463,8 @@
 <div class="tsui-dashboard-mask" transition:fade>
     <DashboardDialog on:close={()=>{dialogVisible = false}} {...dialogAttrs}/>
 </div>
+{/if}
+{#if templates}
+<TemplateChoosePanel {templates} current={template} on:delete={deleteTemplate}
+    on:change={changeTemplate}/>
 {/if}

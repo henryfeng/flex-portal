@@ -119,6 +119,10 @@ export default class TemplateManager {
         }
     }
 
+    get(): Array<Template> {
+        return [...this.#list];
+    }
+
     get current():Template {
         return this.#current;
     }
