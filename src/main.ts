@@ -2,7 +2,7 @@ import App from './App.svelte'
 import "./app.css"
 import "./assets/ticatec-dashboard.css"
 import 'ticatec-ts-enchance-utils/EnArray'
-import 'tsui-summary-table/tsui-summary-table.css'
+import '@hanmotec/tsui-summary-table/tsui-summary-table.css'
 import "ticatec-app-framework/Toast";
 
 declare global {

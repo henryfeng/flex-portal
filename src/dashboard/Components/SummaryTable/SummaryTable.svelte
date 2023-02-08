@@ -1,6 +1,6 @@
 <script lang="ts">
-    import SummaryTable from "tsui-summary-table";
-    import type {Column} from "tsui-summary-table";
+    import SummaryTable from "@hanmotec/tsui-summary-table";
+    import type {Column} from "@hanmotec/tsui-summary-table";
     import dataService from "../../lib/DataService";
     import iconRefresh from "../../../assets/refresh.svg";
 

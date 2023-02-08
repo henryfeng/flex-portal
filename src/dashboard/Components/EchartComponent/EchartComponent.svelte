@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ChartPanel, {TicatecChart, echartUtils} from 'tsui-echarts';
+    import ChartPanel, {TicatecChart, echartUtils} from '@hanmotec/tsui-echarts';
 
     import {onMount} from "svelte";
     import PortalContext from "../../PortalContext";
